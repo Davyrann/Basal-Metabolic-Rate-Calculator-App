@@ -3,7 +3,12 @@ import 'package:bmi/constants.dart';
 import 'package:bmi/components/custom_card.dart';
 import 'package:bmi/components/bottom_button.dart';
 
-// Data hasil dikirim dari InputPage melalui constructor (navigasi antar halaman).
+// ============================================================================
+// ALUR PROGRAM - LANGKAH 4: Menampilkan Hasil & Interaksi Kembali
+// ResultPage menerima hasil kalkulasi dari InputPage melalui constructor.
+// Menampilkan skor BMR, interpretasi, dan estimasi TDEE.
+// Tombol 'RE-CALCULATE' memicu Navigator.pop untuk kembali ke InputPage.
+// ============================================================================
 class ResultPage extends StatelessWidget {
   const ResultPage({
     super.key,
@@ -13,6 +18,7 @@ class ResultPage extends StatelessWidget {
     required this.interpretation,
   });
 
+  // Data hasil kalkulasi yang diterima dari InputPage
   final double bmr;
   final double tdee;
   final ActivityLevel activity;
@@ -28,6 +34,7 @@ class ResultPage extends StatelessWidget {
           child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             const Padding(padding: EdgeInsets.symmetric(vertical: 12), child: Text(
               'Hasil Perhitungan', style: TextStyle(fontSize: 29, fontWeight: FontWeight.bold))),
+            // Kartu Utama: Menampilkan Angka BMR (Basal Metabolic Rate)
             CustomCard(color: activeCardColor, cardChild: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
               child: Column(children: [
@@ -43,6 +50,7 @@ class ResultPage extends StatelessWidget {
               ]),
             )),
             const SizedBox(height: 12),
+            // Kartu Sekunder: Menampilkan Estimasi Kebutuhan Kalori Harian (TDEE)
             CustomCard(color: activeCardColor, cardChild: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(children: [
@@ -62,6 +70,11 @@ class ResultPage extends StatelessWidget {
               style: TextStyle(color: Color(0xFFB2B3C2), fontSize: 13))),
           ]),
         ))),
+        // ======================================================================
+        // ALUR PROGRAM - LANGKAH 4.1: Kembali ke Layar Input (Pop Route)
+        // Tombol RE-CALCULATE menutup ResultPage dan mengembalikan pengguna ke
+        // InputPage tanpa kehilangan input sebelumnya.
+        // ======================================================================
         BottomButton(buttonTitle: 'RE-CALCULATE', onTap: () => Navigator.pop(context)),
       ])),
     );

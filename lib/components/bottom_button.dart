@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bmi/constants.dart';
 
+/// Tombol lebar di bagian bawah layar untuk aksi utama (Calculate / Re-Calculate).
 class BottomButton extends StatelessWidget {
   const BottomButton({super.key, required this.buttonTitle, required this.onTap});
   final String buttonTitle;

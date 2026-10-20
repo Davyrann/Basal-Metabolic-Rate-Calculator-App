@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Komponen wadah kartu persegi yang dapat diklik atau statis.
+/// Digunakan di InputPage dan ResultPage untuk membungkus setiap kelompok kontrol/informasi.
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.color, this.cardChild, this.onPress});
 

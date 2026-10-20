@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+/// Tombol bulat kustom untuk aksi penambahan (+) atau pengurangan (-) nilai counter.
 class RoundIconButton extends StatelessWidget {
   const RoundIconButton({super.key, required this.icon, required this.onPressed});
   final FaIconData icon;
