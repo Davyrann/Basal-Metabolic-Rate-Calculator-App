@@ -1,93 +1,110 @@
-# BMR Calculator – Kelompok Raihan
+# BMR Calculator
 
-## Identitas Proyek
-- **Nama aplikasi:** BMR Calculator
-- **Mata kuliah:** Pemrograman Perangkat Bergerak (PPB)
-- **Kelompok:** [Isi nomor/nama kelompok]
-- **Anggota (2–3 orang):**
-  1. Muhammad Raihan Faza — [NIM]
-  2. [Nama Anggota 2] — [NIM]
-  3. [Nama Anggota 3, jika ada] — [NIM]
+Proyek aplikasi mobile Flutter untuk menghitung kebutuhan energi basal harian dan estimasi total kebutuhan kalori tubuh. Dibuat untuk memenuhi tugas mata kuliah Pemrograman Perangkat Bergerak (PPB).
 
-> Ganti bagian dalam tanda kurung siku sesuai identitas kelompok sebelum diunggah ke GitHub.
+## Anggota Kelompok
 
-## Deskripsi
-Aplikasi Flutter untuk menghitung **Basal Metabolic Rate (BMR)**, yaitu perkiraan energi yang digunakan tubuh saat istirahat, dengan formula **Mifflin–St Jeor**. Aplikasi dikembangkan dari proyek latihan BMI Calculator. Input terdiri dari jenis kelamin, berat badan (kg), tinggi badan (cm), umur (tahun), dan tingkat aktivitas. Hasil aplikasi adalah BMR (kcal/hari) serta estimasi kebutuhan kalori harian (TDEE = BMR × faktor aktivitas).
+**Kelompok 2**
+1. Fatih Nur Faiq — K3524052
+2. Muhammad Dava Syahputra — K3524058
+3. Muhammad Raihan Faza — K3524060
 
-### Rumus yang digunakan
-- Pria: `BMR = 10 × berat + 6.25 × tinggi − 5 × umur + 5`
-- Wanita: `BMR = 10 × berat + 6.25 × tinggi − 5 × umur − 161`
-- `TDEE = BMR × faktor aktivitas`
-- Berat dalam kg, tinggi dalam cm, umur dalam tahun.
-- Rentang umur input aplikasi 15–80 tahun.
+---
 
-## Fitur
-- Pemilihan jenis kelamin.
-- Pengaturan tinggi badan dengan slider.
-- Tombol penambah/pengurang berat badan dan umur.
-- Pemilihan tingkat aktivitas untuk menghitung kebutuhan kalori total.
-- Halaman hasil BMR, TDEE, dan penjelasan.
-- Tombol Re-Calculate untuk kembali ke halaman input.
+## Deskripsi Aplikasi
+
+**BMR Calculator** adalah aplikasi berbasis Flutter untuk menghitung **Basal Metabolic Rate (BMR)**, yaitu jumlah energi minimum yang dibutuhkan tubuh untuk menjalankan fungsi vital saat istirahat (seperti bernapas, memompa darah, dan regenerasi sel). Perhitungan menggunakan formula standar medis **Mifflin–St Jeor**.
+
+Selain BMR, aplikasi mengestimasi **Total Daily Energy Expenditure (TDEE)**, yaitu total kebutuhan kalori harian yang disesuaikan dengan tingkat aktivitas fisik pengguna.
+
+### Formula Perhitungan (Mifflin–St Jeor)
+
+- **Pria:**
+  $$\text{BMR} = 10 \times \text{berat (kg)} + 6.25 \times \text{tinggi (cm)} - 5 \times \text{umur (tahun)} + 5$$
+
+- **Wanita:**
+  $$\text{BMR} = 10 \times \text{berat (kg)} + 6.25 \times \text{tinggi (cm)} - 5 \times \text{umur (tahun)} - 161$$
+
+- **Estimasi Kalori Harian (TDEE):**
+  $$\text{TDEE} = \text{BMR} \times \text{Faktor Aktivitas}$$
+
+#### Faktor Tingkat Aktivitas:
+| Tingkat Aktivitas | Faktor Pengali |
+|---|---|
+| Sedentary (Jarang bergerak) | 1.2 |
+| Olahraga ringan (1–3x/minggu) | 1.375 |
+| Olahraga sedang (3–5x/minggu) | 1.55 |
+| Aktif (6–7x/minggu) | 1.725 |
+| Sangat aktif (pekerja fisik / atlet) | 1.9 |
+
+---
+
+## Fitur Utama
+
+- **Pemilihan Gender:** Kartu seleksi interaktif untuk Male atau Female.
+- **Slider Tinggi Badan:** Pengaturan tinggi badan (120 cm – 220 cm) secara real-time.
+- **Counter Berat & Umur:** Tombol tombol plus/minus untuk penyesuaian berat badan dan umur pengguna.
+- **Tingkat Aktivitas:** Dropdown menu dengan 5 tingkat aktivitas fisik.
+- **Halaman Hasil (Result Page):** Menampilkan skor BMR, interpretasi kesehatan, serta estimasi TDEE.
+- **Tombol Re-Calculate:** Navigasi kembali ke halaman input dengan tetap mempertahankan state sebelumnya.
+
+---
 
 ## Screenshot Aplikasi
-Tambahkan screenshot asli aplikasi setelah menjalankannya pada emulator/HP. Simpan file ke folder `screenshots/` dan gunakan nama berikut:
 
-**Halaman input**
+| Halaman Input | Halaman Hasil |
+| :---: | :---: |
+| ![Halaman Input](screenshots/input.png) | ![Halaman Hasil](screenshots/result.png) |
 
-![Halaman Input BMR](screenshots/input.png)
-
-**Halaman hasil**
-
-![Halaman Hasil BMR](screenshots/result.png)
-
-> Gambar belum disertakan karena screenshot harus berasal dari aplikasi yang benar-benar berhasil dijalankan.
-
-## Struktur Source Code
-```text
-lib/
-  main.dart                  # Tema dan titik masuk aplikasi
-  constants.dart             # Enum, konstanta warna dan aktivitas
-  calculator.dart            # Class perhitungan BMR dan TDEE
-  components/
-    custom_card.dart         # Widget kartu yang dipakai ulang
-    icon_card.dart           # Widget ikon gender
-    round_icon_button.dart   # Tombol + dan -
-    bottom_button.dart       # Tombol aksi bawah
-  pages/
-    input_page.dart          # Input, state, dan navigasi
-    result_page.dart         # Menampilkan BMR dan TDEE
-test/
-  calculator_test.dart       # Unit test logika perhitungan
-```
-
-## Cara Menjalankan di VS Code (Windows)
-1. Pastikan Flutter SDK **≥ 3.27** dan Dart SDK **≥ 3.9** tersedia. Periksa dengan `flutter --version` dan `flutter doctor`.
-2. Extract ZIP dan **buka folder `BMR_Calculator_Kelompok_Raihan`** lewat VS Code.
-3. Bila folder `android/` belum ada, buat kerangka Android: `flutter create --platforms=android --project-name bmi .`
-4. Jalankan `flutter pub get`.
-5. Sambungkan HP Android dengan USB debugging atau hidupkan emulator, lalu `flutter run`.
-6. Jalankan pengujian dengan `flutter test`.
-7. Build APK: `flutter build apk --release`. File keluar pada `build/app/outputs/flutter-apk/app-release.apk`.
-
-**Jika sebelumnya memakai proyek BMI yang sama:** Salin `lib/`, `test/`, `pubspec.yaml`, dan `README.md` dari proyek ini ke proyek Flutter lama (backup dahulu); lalu jalankan `flutter clean`, `flutter pub get`, `flutter run`.
+---
 
 ## Alur Program
-1. `main.dart` memanggil `InputPage`.
-2. `InputPage` menyimpan nilai gender, tinggi, berat, umur, dan aktivitas di state.
-3. Saat tombol Calculate ditekan, nilai dikirim ke `Calculator`.
-4. Class `Calculator` menghitung BMR dengan Mifflin–St Jeor serta TDEE.
-5. `Navigator.push()` mengirim hasil melalui constructor `ResultPage`.
-6. `ResultPage` menampilkan hasil; tombol Re-Calculate memanggil `Navigator.pop()`.
 
-## Referensi
-- https://www.calculator.net/bmr-calculator.html
-- https://pub.dev/packages/font_awesome_flutter
+1. **Langkah 1 (`lib/main.dart`):** Aplikasi menginisialisasi tema gelap (`ThemeData.dark()`) dan membuka `InputPage` sebagai root page.
+2. **Langkah 2 (`lib/pages/input_page.dart`):** Pengguna berinteraksi dengan widget input (gender, tinggi, berat, umur, aktivitas). State disimpan di `_InputPageState`.
+3. **Langkah 3 (`lib/calculator.dart`):** Saat tombol **CALCULATE BMR** ditekan, data dioper ke model OOP `Calculator`. Method `calculateBMR()` dan `calculateTDEE()` menghitung angka kalori.
+4. **Langkah 4 (`lib/pages/result_page.dart`):** Hasil dikirim via route `Navigator.push()` dan ditampilkan di `ResultPage`.
+5. **Langkah 5 (Kembali):** Pengguna menekan tombol **RE-CALCULATE** yang memanggil `Navigator.pop(context)` untuk kembali ke halaman input.
 
-## Pengumpulan
-- [ ] Identitas 2–3 anggota terisi benar.
-- [x] Penjelasan kode melalui komentar.
-- [x] README berisi nama proyek dan deskripsi.
-- [ ] Screenshot input dan hasil asli ditambahkan.
-- [ ] Jalankan serta uji aplikasi di perangkat.
-- [ ] Upload proyek ke GitHub.
-- [ ] Kumpulkan URL repository sebelum **27 Oktober 2026 pukul 00.00** sesuai tampilan tugas.
+---
+
+## Struktur Berkas
+
+```text
+lib/
+├── main.dart                  # Inisialisasi aplikasi dan tema
+├── constants.dart             # Konstanta tema, warna, dan enum (Gender & ActivityLevel)
+├── calculator.dart            # Logika perhitungan BMR & TDEE (OOP)
+├── components/
+│   ├── bottom_button.dart     # Tombol aksi bawah layar
+│   ├── custom_card.dart       # Wadah kartu kustom
+│   ├── icon_card.dart         # Widget ikon gender
+│   └── round_icon_button.dart # Tombol bulat increment/decrement
+└── pages/
+    ├── input_page.dart        # Form input dan state management
+    └── result_page.dart       # Tampilan hasil BMR dan TDEE
+test/
+├── calculator_test.dart       # Unit test logika BMR & TDEE
+└── widget_test.dart           # Widget smoke test
+screenshots/
+├── input.png                  # Screenshot tampilan input
+└── result.png                 # Screenshot tampilan hasil
+```
+
+---
+
+## Cara Menjalankan
+
+1. Pastikan Flutter SDK terpasang di sistem (`flutter doctor`).
+2. Masuk ke direktori proyek dan ambil dependencies:
+   ```bash
+   flutter pub get
+   ```
+3. Jalankan unit test:
+   ```bash
+   flutter test
+   ```
+4. Jalankan aplikasi pada perangkat/emulator atau web:
+   ```bash
+   flutter run
+   ```
